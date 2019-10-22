@@ -1,9 +1,7 @@
 package com.zipcodewilmington;
 
+import java.util.*;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
 import org.apache.commons.lang3.ArrayUtils;
 
 /**
@@ -74,7 +72,8 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        int length = array.length;
+        Integer length = array.length;
+
         for (int i = 0; i < array.length; i++) {
             String start = array[i];
             String end = array[--length];
@@ -82,7 +81,7 @@ public class StringArrayUtils {
             if (length < i) {
                 return true;
             }
-            if (start != end) {
+            if (!start.equals(end)) {
                 return false;
             }
         }
@@ -133,7 +132,14 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+        String[] arr = array;
+
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] == array[i-1]) {
+                arr = ArrayUtils.removeElement(array, array[i]);
+            }
+        }
+        return arr;
     }
 
     /**

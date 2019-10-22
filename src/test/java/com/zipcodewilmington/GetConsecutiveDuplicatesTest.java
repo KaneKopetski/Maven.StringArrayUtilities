@@ -5,8 +5,6 @@ import org.junit.Test;
 
 public class GetConsecutiveDuplicatesTest {
 
-
-
     @Test
     public void testRemoveConsecutiveDuplicates1() {
         String[] array = {"aba", "aba", "baa", "bab", "bba", "bba", "bba", "bba", "bbb", "bbb"};
@@ -33,5 +31,6 @@ public class GetConsecutiveDuplicatesTest {
         String[] expected = {"aba", "baa", "bab", "bba", "zzz", "bba", "aba", "bbb"};
         Assert.assertEquals(actual, expected);
     }
+
 
 }
