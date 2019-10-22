@@ -93,7 +93,7 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPangramic(String[] array) {
         return false;
-    }
+        }
 
     /**
      * @param array array of String objects
@@ -101,7 +101,13 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        Integer valueCount = 0;
+
+        for (String s : array) {
+            if (s.equalsIgnoreCase(value)) {
+                valueCount += 1;
+            }
+        } return valueCount;
     }
 
     /**
