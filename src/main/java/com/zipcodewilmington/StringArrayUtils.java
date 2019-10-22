@@ -132,14 +132,19 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        ArrayList<String> newList = new ArrayList();
-        newList.add(array[0]);
-        for(int i = 1; i < array.length; i++) {
-            if(array[i] != array[i-1]) {
-                newList.add(array[i]);
+        ArrayList<String> newList = new ArrayList(Arrays.asList(array));
+        // Always add first value
+        newList.add(newList.get(0));
+
+        // Iterate the remaining values
+        for(int i = 1; i < newList.size(); i++) {
+            // Compare current value to previous
+            if(newList.get(i-1) != newList.get(i)) {
+                newList.add(newList.get(i));
             }
         }
-        return newList.toArray(new String[newList.size()]);
+
+        return newList.toArray(array);
     }
 
     /**
