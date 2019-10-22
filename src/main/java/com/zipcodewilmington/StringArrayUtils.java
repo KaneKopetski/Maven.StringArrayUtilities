@@ -2,7 +2,9 @@ package com.zipcodewilmington;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * Created by leon on 1/29/18.
@@ -116,7 +118,14 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        String[] arr = array;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(valueToRemove)) {
+                arr = ArrayUtils.removeElement(array, array[i]);
+            }
+        }
+        return arr;
     }
 
     /**
