@@ -3,6 +3,7 @@ package com.zipcodewilmington;
 import java.util.*;
 import java.util.Arrays;
 import org.apache.commons.lang3.ArrayUtils;
+import org.junit.Assert;
 
 /**
  * Created by leon on 1/29/18.
@@ -93,8 +94,25 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
-    }
+        Boolean isPangramic = true;
+        //get a list of the abc
+        String abc = "abcdefghijklmnopqrstuvwxyz";
+        //turn array to string
+        String arr = Arrays.toString(array).toLowerCase();
+        //start on first letter, iterate over alphabet and see if string contains current letter of the alphabet
+        for (int i = 0; i < abc.length(); i++) {
+            //if it does, set a flag to true
+            String charAsString = ((Character)abc.charAt(i)).toString();
+            if (!arr.contains(charAsString)) {
+                isPangramic = false;
+                break;
+            }
+            } return isPangramic;
+        }
+        //and if it doesnt set it to false and break loop
+        //return flag value
+
+
 
     /**
      * @param array array of String objects
@@ -148,51 +166,20 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        //create a stringbuilder object
         StringBuilder sb = new StringBuilder();
-        //begin iteration
         for (int i = 0; i < array.length; i++) {
-            //append first element to sb
             if (i == 0) {
                 sb.append(array[i]);
             }
-            //if element matches previous element, append to sb
             else if (array[i] == array[i - 1]) {
                 sb.append(array[i]);
             }
-            //if element does not match previous element, append space + element to sb
             else {
                 sb.append(" " + array[i]);
             }
-            //return sb as array
-
         }
         return sb.toString().split(" ");
-
     }
 }
-        /* StringBuilder sb = new StringBuilder();
-        ArrayList<String> newList = new ArrayList(Arrays.asList(array));
-
-        for (int i = 1 ; i < newList.size() ; i++) {
-            if (newList.get(i).equals(newList.get(i-1))) {
-                sb.append(newList.get(i));
-            }
-        }
-
-        if (newList.get(newList.size()-1).equals(newList.get(newList.size()-2))) {
-            sb.append(newList.get(newList.size()-1));
-
-        }
-
-        for (int i = 1 ; i < sb.toString().length() ; i++) {
-            if (sb.toString().charAt(i) != sb.toString().charAt(i-1)) {
-                sb.insert(i, " ");
-            }
-        }
-
-        return (sb.toString()).split(" ");
-    }
-    */
 
 
