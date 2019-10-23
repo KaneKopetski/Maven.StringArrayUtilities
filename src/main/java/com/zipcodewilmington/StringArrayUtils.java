@@ -29,7 +29,7 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return array[array.length-1];
+        return array[array.length - 1];
     }
 
     /**
@@ -37,7 +37,7 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return array[array.length-2];
+        return array[array.length - 2];
     }
 
     /**
@@ -48,8 +48,8 @@ public class StringArrayUtils {
     public static boolean contains(String[] array, String value) {
         Boolean doesContain = false;
 
-        for(String s : array) {
-            if (s.equals(value));
+        for (String s : array) {
+            if (s.equals(value)) ;
             doesContain = true;
         }
 
@@ -94,7 +94,7 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPangramic(String[] array) {
         return false;
-        }
+    }
 
     /**
      * @param array array of String objects
@@ -108,7 +108,8 @@ public class StringArrayUtils {
             if (s.equalsIgnoreCase(value)) {
                 valueCount += 1;
             }
-        } return valueCount;
+        }
+        return valueCount;
     }
 
     /**
@@ -117,14 +118,8 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        String[] arr = array;
 
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].equals(valueToRemove)) {
-                arr = ArrayUtils.removeElement(array, array[i]);
-            }
-        }
-        return arr;
+    return null;
     }
 
     /**
@@ -132,19 +127,7 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        ArrayList<String> newList = new ArrayList(Arrays.asList(array));
-        // Always add first value
-        newList.add(newList.get(0));
-
-        // Iterate the remaining values
-        for(int i = 1; i < newList.size(); i++) {
-            // Compare current value to previous
-            if(newList.get(i-1) != newList.get(i)) {
-                newList.add(newList.get(i));
-            }
-        }
-
-        return newList.toArray(array);
+        return null;
     }
 
     /**
@@ -152,8 +135,51 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+        //create a stringbuilder object
+        StringBuilder sb = new StringBuilder();
+        //begin iteration
+        for (int i = 0; i < array.length; i++) {
+            //append first element to sb
+            if (i == 0) {
+                sb.append(array[i]);
+            }
+            //if element matches previous element, append to sb
+            else if (array[i] == array[i - 1]) {
+                sb.append(array[i]);
+            }
+            //if element does not match previous element, append space + element to sb
+            else {
+                sb.append(" " + array[i]);
+            }
+            //return sb as array
+
+        }
+        return sb.toString().split(" ");
+
     }
-
-
 }
+        /* StringBuilder sb = new StringBuilder();
+        ArrayList<String> newList = new ArrayList(Arrays.asList(array));
+
+        for (int i = 1 ; i < newList.size() ; i++) {
+            if (newList.get(i).equals(newList.get(i-1))) {
+                sb.append(newList.get(i));
+            }
+        }
+
+        if (newList.get(newList.size()-1).equals(newList.get(newList.size()-2))) {
+            sb.append(newList.get(newList.size()-1));
+
+        }
+
+        for (int i = 1 ; i < sb.toString().length() ; i++) {
+            if (sb.toString().charAt(i) != sb.toString().charAt(i-1)) {
+                sb.insert(i, " ");
+            }
+        }
+
+        return (sb.toString()).split(" ");
+    }
+    */
+
+
