@@ -118,8 +118,14 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
+        String[] arr = array;
 
-    return null;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(valueToRemove)) {
+                arr = ArrayUtils.removeElement(array, array[i]);
+            }
+        }
+        return arr;
     }
 
     /**
@@ -127,7 +133,14 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+        ArrayList<String> arr = new ArrayList();
+        arr.add(array[0]);
+        for (int i = 1; i < array.length; i++) {
+          if (array[i] != array[i-1]) {
+                arr.add(array[i]);
+            }
+        }
+        return arr.toArray(new String[arr.size()]);
     }
 
     /**
